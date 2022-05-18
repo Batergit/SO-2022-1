@@ -1,0 +1,21 @@
+FROM alpine
+
+RUN apk update
+RUN apk add --no-cache bash
+
+RUN apk add build-base
+
+COPY ej1.cpp ./
+
+ENTRYPOINT [ "bash" ]
+
+
+sudo docker build -f Dockerfile . -t so_test
+
+sudo docker run -v /home/joako/Documentos/SO/ej1.cpp:/ej1.cpp  -it  --rm --name prueba  so_test
+
+gcc ej1.cpp -o ej1
+./ej1
+
+
+
